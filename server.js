@@ -1,6 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const env = require('dotenv');
+const env = require('dotenv').config();
 const port = 3000;
 const app = express();
 app.use(express.json());
@@ -11,8 +11,7 @@ app.post('/', async (req, res) => {
   try {
     const city = req.query.city;
     const units = req.query.units;
-    const API_KEY = '40a8904c86de719133c8841b56287066';
-    const fetchWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${API_KEY}&units=${units}`;
+    const fetchWeather = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${process.env.WEATHER_API_KEY}&units=${units}`;
 
     const weatherData = await fetch(fetchWeather);
     const jsonData = await weatherData.json();
