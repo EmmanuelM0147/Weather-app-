@@ -13,7 +13,7 @@ app.post('/', async (req, res) => {
       let search = document.querySelector(".weather__searchform");
       // prevent default action
       e.preventDefault();
-      // change current city
+      
       currCity = search.value;
       // get weather forecast 
       getWeather();
@@ -21,7 +21,7 @@ app.post('/', async (req, res) => {
       search.value = ""
   })
 
-  // units
+  
   document.querySelector(".weather_unit_celsius").addEventListener('click', () => {
       if(units !== "metric"){
           // change to metric
